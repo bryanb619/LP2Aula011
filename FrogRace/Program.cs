@@ -5,9 +5,16 @@ namespace FrogRace
 {
     public class Program
     {
+
+        private static object frogLock;
+
         private static void Main(string[] args)
         {
-           
+            
+
+            // add lock
+            frogLock = new object();
+
             Thread t1, t2, t3;
 
             t1 = new Thread(FrogRun);
@@ -52,7 +59,8 @@ namespace FrogRace
 
                 Thread.Sleep(timeToSleep);
 
-                Console.WriteLine($"Frog: {frogN} Jump: {i +1} Thread: {Thread.CurrentThread.Name}");
+                Console.WriteLine(
+                    $"Frog: {frogN} |-| Jump: {i +1} |-| Thread: {Thread.CurrentThread.Name}");
             }
         }
     }
